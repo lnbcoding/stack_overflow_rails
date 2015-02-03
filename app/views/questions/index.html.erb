@@ -1,1 +1,7 @@
 <h1>Stack Overflow Clone</h1>
+
+<% @questions.each do |question| %>
+    <p>Question: </p><%= question.title %>
+    <p>Content: </p><%= question.content %><br/>
+    <%= "***" * 25 %>
+<% end %>
