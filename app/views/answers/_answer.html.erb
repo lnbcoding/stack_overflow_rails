@@ -1,0 +1,22 @@
+<p>
+    <h4>Comment Title: </h4>
+    <%= answer.title %>
+</p>
+<p>
+    <h4>Comment: </h4>
+    <%= answer.content %>
+</p>
+<p>
+    <%= "***" * 30 %>
+</p>
+
+<p>
+
+<!-- Clicking this new "Destroy Comment" link will fire off a DELETE
+/articles/:article_id/comments/:id to our CommentsController, which can then use this to find the comment we want to delete, so let's add a destroy action to our controller (app/controllers/comments_controller.rb):
+ -->
+    <%= link_to 'Delete Answer', [answer.question, answer],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+
+</p>
