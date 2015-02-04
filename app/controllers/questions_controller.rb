@@ -40,13 +40,13 @@ class QuestionsController < ApplicationController
 
     def upvotes
         @question = Question.find(params[:id])
-        @question.upvote!
+        @question.upvote
         redirect_to questions_path
     end
 
     def downvotes
         @question = Question.find(params[:id])
-        @question.downvote!
+        @question.downvote
         redirect_to questions_path
     end
 
