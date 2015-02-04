@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :questions
+  resources :questions do
+    # As with the welcome controller, we will need to add a route so that Rails knows where we would like to navigate to see comments
+    # This creates comments as a nested resource within articles. This is another part of capturing the hierarchical relationship that exists between articles and comments.
+    resources :answers
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
