@@ -3,6 +3,11 @@
 <%= link_to 'Ask a New Question', new_question_path %><br/><br/>
 <%= "***" * 25 %>
 
+<div class="quotes_knowledge">
+    <h4>Random Quotezizzle of Knowledge</h4>
+    <p><%= @random_quote  %></p>
+</div>
+
 <% @questions.each do |question| %>
     <p># of Votes: <%= question.votes %></p>
     <p><%= link_to question.title, question_path(question) %></p>

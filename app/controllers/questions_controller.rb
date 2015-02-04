@@ -1,7 +1,14 @@
 class QuestionsController < ApplicationController
 
     def index
-        @questions = Question.all
+        @questions = Question.order("votes desc").all
+        headers = {:headers => {
+          "Authorization" => "token #{ENV["GH_KEY"]}",
+          "User-Agent" => "zenman"
+        }}
+
+        response = HTTParty.get("https://api.github.com/zen", headers)
+        @random_quote = response.parsed_response
     end
 
     def show
