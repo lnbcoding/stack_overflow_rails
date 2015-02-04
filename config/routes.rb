@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  post 'answers/:id/upvote' => 'answers#upvote', as: :upvotes_answer
-  post 'answers/:id/downvote' => 'answers#downvote', as: :downvotes_answer
+  post 'answers/:id/upvotes' => 'answers#upvotes', as: :upvotes_answer
+  post 'answers/:id/downvotes' => 'answers#downvotes', as: :downvotes_answer
 
 
   resources :questions do
