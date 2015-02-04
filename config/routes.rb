@@ -1,12 +1,22 @@
 Rails.application.routes.draw do
 
+  post 'answers/:id/upvote' => 'answers#upvote', as: :upvotes_answer
+  post 'answers/:id/downvote' => 'answers#downvote', as: :downvotes_answer
+
+
   resources :questions do
     member do
       post :upvotes
       post :downvotes
     end
 
-    resources :answers
+    resources :answers do
+      # member do
+      #   post :upvotes
+      #   post :downvotes
+      # end
+    end
+
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
