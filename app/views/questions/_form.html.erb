@@ -1,4 +1,4 @@
-<%= form_for @question do |f| %>
+<%= form_for(@question, remote: true) do |f| %>
     <!-- If there are any errors on the question creation -->
     <!-- remember these are based in the validations defined in the model -->
     <% if @question.errors.any? %>
