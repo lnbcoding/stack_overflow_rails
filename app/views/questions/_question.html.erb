@@ -1,0 +1,9 @@
+<tr class="each-question-index">
+    <td class="question-vote-counter"><%= question.votes %></td>
+    <td><%= link_to question.title, question_path(question) %></td>
+    <td><%= question.content %></td>
+    <td><%= button_to "Upvote", upvotes_question_path(question),
+                    remote: true %></td>
+    <td><%= button_to "Downvote", downvotes_question_path(question),
+                    remote: true %></td>
+</tr>
