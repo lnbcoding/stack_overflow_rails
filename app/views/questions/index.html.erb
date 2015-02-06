@@ -1,7 +1,22 @@
 <h1>Stack Overflow Clone</h1>
 
-<% @questions.each do |question| %>
-    <p>Question: </p><%= question.title %>
-    <p>Content: </p><%= question.content %><br/>
-    <%= "***" * 25 %>
-<% end %>
+<div class="quotes_knowledge">
+    <h4>Random Quotezizzle of Knowledge</h4>
+    <p><%= @random_quote  %></p>
+</div>
+
+<%= link_to 'Ask a New Question', new_question_path %><br/><br/>
+<%= "***" * 50 %>
+
+<table>
+  <tr>
+    <th>Votes</th>
+    <th>Title</th>
+    <th>Content</th>
+    <th>Miscellaneous</th>
+  </tr>
+ 
+  <% @questions.each do |question_from_collection| %>
+    <%= render partial: 'question', locals: { question: question_from_collection } %>
+  <% end %>
+</table>

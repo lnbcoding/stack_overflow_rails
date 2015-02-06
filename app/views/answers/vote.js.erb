@@ -1,0 +1,9 @@
+function updateAnswerVote(event) {
+    $target = $(event.target);
+    $targetList = $target.closest("tr").find("td.answer-vote-counter");
+    $targetList.html(<%= votes_count %>);
+}
+
+$(document).ready(function(){
+    $('.button_to[data-remote=true]').on("ajax:success", updateAnswerVote);
+})

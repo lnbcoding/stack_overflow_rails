@@ -1,4 +1,33 @@
 <h1>This is an individual question</h1>
 
-    <p>Question: </p><%= @question.title %>
-    <p>Content: </p><%= @question.content %>
+<table>
+    <tr>
+        <th>Question</th>
+        <th>Content</th>
+        <th>Miscellaneous</th>
+    </tr>
+    <tr>
+        <td><%= @question.title %></td>
+        <td><%= @question.content %></td>
+        <td><%= link_to "Edit Question", edit_question_path(@question) %></td>
+        <td><%= button_to 'Delete', question_path(@question),
+                    method: :delete,
+                    data: { confirm: 'Are you sure you want to delete? '},
+                    :class => "delete-question" %></td>
+
+    </tr>
+</table>
+
+<div class="all-answers">
+    <h3>Users' Answers</h3>
+
+    <%= render @question.answers.order("votes desc") %>
+</div>
+
+<h3>Add an Answer</h3>
+
+<%= render 'answers/form' %>
+
+<%= link_to 'All Questions', questions_path %><br/><br/>
+
+<%= link_to 'Edit Question', edit_question_path(@question) %>

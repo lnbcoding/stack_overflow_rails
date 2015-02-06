@@ -1,0 +1,19 @@
+<div class="each-answer-display">
+    <table>
+        <tr>
+            <th>Votes</th>
+            <th>Title</th>
+            <th>Content</th>
+        </tr>
+
+        <tr>
+            <td class="answer-vote-counter"><%= answer.votes %></td>
+            <td><%= answer.title %></td>
+            <td><%= answer.content %></td>
+            <td><%=button_to "Upvote", upvotes_answer_path(answer),
+                            remote: true %></td>
+            <td><%=button_to "Downvote", downvotes_answer_path(answer),
+                            remote: true %></td>
+        </tr>
+    </table>
+</div>
