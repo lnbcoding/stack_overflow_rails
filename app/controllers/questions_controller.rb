@@ -2,10 +2,10 @@ class QuestionsController < ApplicationController
 
     def index
         @questions = Question.order("votes desc").all
-        headers = {:headers => {
+        headers = { :headers => {
           "Authorization" => "token #{ENV["GH_KEY"]}",
           "User-Agent" => "zenman"
-        }}
+        } }
 
         response = HTTParty.get("https://api.github.com/zen", headers)
         @random_quote = response.parsed_response
@@ -42,19 +42,37 @@ class QuestionsController < ApplicationController
         @question = Question.find(params[:id])
         @question.destroy
 
-        redirect_to questions_path
+        respond_to do |format|
+            format.js do
+                render nothing: true
+            end
+
+            format.any do
+                redirect_to questions_path
+            end
+        end
     end
 
     def upvotes
         @question = Question.find(params[:id])
         @question.upvote
-        redirect_to questions_path
+
+        respond_to do |format|
+            format.js { render "vote", :locals => {:votes_count => @question.votes} }
+
+            format.any { redirect_to questions_path }
+        end
     end
 
     def downvotes
         @question = Question.find(params[:id])
         @question.downvote
-        redirect_to questions_path
+
+        respond_to do |format|
+            format.js { render "vote", :locals => {:votes_count => @question.votes} }
+
+            format.any { redirect_to questions_path }
+        end
     end
 
     private
