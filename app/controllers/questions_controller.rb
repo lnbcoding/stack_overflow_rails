@@ -17,6 +17,15 @@ class QuestionsController < ApplicationController
 
     def new
         @question = Question.new
+        # respond_to do |format|
+        #     format.js do
+        #         render partial: "newquestion"
+        #     end
+
+        #     format.any do
+        #         redirect_to new_question_path
+        #     end
+        # end
     end
 
     def edit
@@ -26,7 +35,17 @@ class QuestionsController < ApplicationController
     def create
         @question = Question.new(question_params)
         @question.save
+
         redirect_to @question
+        # respond_to do |format|
+        #     format.js do
+        #         redirect_to questions_path
+        #     end
+
+        #     format.any do
+        #         redirect_to @question
+        #     end
+        # end
     end
 
     def update

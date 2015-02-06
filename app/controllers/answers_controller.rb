@@ -17,13 +17,23 @@ class AnswersController < ApplicationController
     def upvotes
         @answer = Answer.find(params[:id])
         @answer.upvote
-        redirect_to question_path(@answer.question)
+
+        respond_to do |format|
+            format.js { render "vote", :locals => {:votes_count => @answer.votes } }
+
+            format.any { redirect_to question_path(@answer.question) }
+        end
     end
 
     def downvotes
         @answer = Answer.find(params[:id])
         @answer.downvote
-        redirect_to question_path(@answer.question)
+
+        respond_to do |format|
+            format.js { render "vote", :locals => {:votes_count => @answer.votes } }
+
+            format.any { redirect_to question_path(@answer.question) }
+        end
     end
 
     private
